@@ -380,7 +380,7 @@ class Application(tk.Frame):
         self.phase_shift_slider = tk.Scale(self.master, from_=self.phase_shift_labels[0],
                                            to=self.phase_shift_labels[len(self.phase_shift_labels) - 1],
                                            tickinterval=self.phase_shift_labels[len(self.phase_shift_labels) - 1],
-                                           resolution=.01, length=slider_length, orient="horizontal")
+                                           resolution=.001, length=slider_length, orient="horizontal")
 
         if command is None:
             command = (lambda phase_shift=self.phase_shift_slider.get():
