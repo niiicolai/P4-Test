@@ -163,12 +163,14 @@ class Application(tk.Frame):
         self.callback_activated = False
         self.next_callback = "TWO"
         self.create_top_background()
-        self.create_top_panel("Step 3")
-        self.create_top_small_panel("However, for the purpose of the test, you are not meant to see the graph\n"
-                                    "while aligning the sounds. Use the play button to listen to the sounds "
-                                    "repeatedly.\n and align the two sounds, until the 'OK' button shows up.\n"
-                                    "In the real test, the 'OK' button is visible at all times. When you press\n"
-                                    " 'OK' it is not possible to go back and change the slider again.")
+        self.create_top_panel("Trial test - preparation for the real test")
+        self.create_top_small_panel("Here you can try out the task of aligning the sounds. Use the play button to play\n"
+                                    " and listen to the sounds repeatedly and align the two sounds until you think they match.\n"
+                                    "You may find this difficult, but do your best. Adjust the volume on your laptop to a \n"
+                                    "comfortable level. After some experimentation, an \"OK\" button will appear.\n"
+                                    "In the real test, the 'OK' button is visible at all times, to not tell you when\n"
+                                    "the sounds are aligned. When you feel comfortable with the task you can go\n"
+                                    "to the actual listening test by pressing ‘OK’")
         self.create_phase_shift_control(title_position=SLIDER_TITLE_POSITION, title_size=SLIDER_TITLE_SIZE,
                                         command=(lambda e: self.demo_phase_shift()))
         self.create_play_button()
@@ -183,8 +185,9 @@ class Application(tk.Frame):
 
         self.current_page = "FOUR"
         self.create_top_background()
-        self.create_top_panel("Demo completed")
-        self.create_top_small_panel("You can now start the actual test, or retry the demo.")
+        self.create_top_panel("Trial test completed")
+        self.create_top_small_panel("You can now start the actual test. \n"
+                                    "Alternatively, let the experimenter know if you have any questions at this point.\n")
 
         position_x = 200
         position_offset = 90
@@ -192,12 +195,14 @@ class Application(tk.Frame):
         button = tk.Button(self.master, text="Start test", fg=DEFAULT_TXT_COLOR,
                            bg=DEFAULT_BGG_COLOR, width=D_BUTTON_WIDTH,
                            height=D_BUTTON_HEIGHT, command=self.create_sound_control_widgets)
-        button.place(x=position_x+position_offset, y=C_BUTTON_POSITION[1])
+        button.place(x=position_x, y=C_BUTTON_POSITION[1])
 
+        """
         button = tk.Button(self.master, text="Retry demo", fg=DEFAULT_TXT_COLOR,
                            bg=DEFAULT_BGG_COLOR, width=D_BUTTON_WIDTH,
                            height=D_BUTTON_HEIGHT, command=self.recreate_demo_step)
         button.place(x=position_x-position_offset, y=C_BUTTON_POSITION[1])
+        """
 
     # WIDGETS METHODS
 
@@ -246,8 +251,12 @@ class Application(tk.Frame):
         self.current_page = "GOODBYE"
         self.create_top_background()
         self.create_top_panel("Thank you, for participating")
-        self.create_top_small_panel("You can safely close the page now\n"
-                                    "by pressing the x, up in the right corner.")
+        self.create_top_small_panel("You can safely close the page now by pressing the x, up in the right corner.\n"
+                                    "Feel free to contact the researchers if you have any questions,\n"
+                                    " or would like to give feedback or would like to redraw your consent to use the data.\n"
+                                    "All data collected is anonymous and cannot be traced back to a single individual.\n"
+                                    "Insert image stating that this is a student project and that the students can be\n"
+                                    "contacted by their group email or the email from the researcher.")
 
     def create_sound_control_widgets(self):
         """Adds the necessary widgets
@@ -291,9 +300,9 @@ class Application(tk.Frame):
         self.counter_label = tk.Label(self.master,
                                       text=text,
                                       fg=DEFAULT_TXT_COLOR, bg=DEFAULT_BGG_COLOR,
-                                      width="78", height="5", font=TITLE_FONT)
+                                      width="78", height="7", font=TITLE_FONT)
         # position the top label
-        self.counter_label.place(x=0, y=55)
+        self.counter_label.place(x=0, y=45)
 
     def create_top_panel(self, text="Synchronise the sounds"):
         """Creates a label meant to be placed on top of the top background

@@ -11,17 +11,43 @@ ARDUINO_INTERFACE = False
 FILE_PATH = "assets/sound/"
 
 # Name of original files
-ORIGINAL_NAMES = [
-    f"{FILE_PATH}High_Hat.wav",
-    f"{FILE_PATH}Kick_Drum.wav",
-    f"{FILE_PATH}Arco_Bass.wav",
-    f"{FILE_PATH}Snare_Drum.wav"
+ORIGINAL_NAMES_C = [
+    f"{FILE_PATH}Arco_Bass_1.wav",
+    f"{FILE_PATH}Dark_Piano_1.wav",
+    f"{FILE_PATH}Snare_1.wav"
 ]
 
 # Name of manipulated files
-MANIPULATED_NAMES = [
-    f"{FILE_PATH}High_Hat_Reverb.wav",
-    f"{FILE_PATH}Reverb_Kick_Drum.wav",
-    f"{FILE_PATH}Reverb_Arco_Bass.wav",
-    f"{FILE_PATH}Reverb_Snare_Drum.wav"
+MANIPULATED_NAMES_C = [
+    f"{FILE_PATH}Arco_Bass_2.wav",
+    f"{FILE_PATH}Dark_Piano_2.wav",
+    f"{FILE_PATH}Snare_2.wav"
+]
+
+# Name of original files
+ORIGINAL_NAMES_T1 = [
+    f"{FILE_PATH}Arco_Bass_1.wav",
+    f"{FILE_PATH}Dark_Piano_1.wav",
+    f"{FILE_PATH}Snare_1.wav"
+]
+
+# Name of manipulated files
+MANIPULATED_NAMES_T1 = [
+    f"{FILE_PATH}Arco_Bass_1_Reverb_Closet.wav",
+    f"{FILE_PATH}Dark_Piano_1_Reverb_Closet.wav",
+    f"{FILE_PATH}Snare_1_Reverb_Closet.wav"
+]
+
+# Name of original files
+ORIGINAL_NAMES_T2 = [
+    f"{FILE_PATH}Arco_Bass_1.wav",
+    f"{FILE_PATH}Dark_Piano_1.wav",
+    f"{FILE_PATH}Snare_1.wav"
+]
+
+# Name of manipulated files
+MANIPULATED_NAMES_T2 = [
+    f"{FILE_PATH}Arco_Bass_1_Reverb_Room.wav",
+    f"{FILE_PATH}Dark_Piano_1_Reverb_Room.wav",
+    f"{FILE_PATH}Snare_1_Reverb_Room.wav"
 ]
