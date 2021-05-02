@@ -161,10 +161,10 @@ class SoundModifier:
         else:
             self.__should_play = True
             if not mute:
-                thread = threading.Thread(target=self.play_audio_files, args=(self, ))
+                thread = threading.Thread(target=self.play_audio_files)
                 thread.start()
 
-    def play_audio_files(self, sound_mod):
+    def play_audio_files(self):
         """Play the 'current' sound files until should_play is false,
            where the original sound is output on the left speaker,
            and the manipulated is output on the right speaker"""
