@@ -1,10 +1,12 @@
 # Dependencies
+import sys
 from config import ORIGINAL_NAMES_C, MANIPULATED_NAMES_C, \
     ORIGINAL_NAMES_T1, MANIPULATED_NAMES_T1, \
     ORIGINAL_NAMES_T2, MANIPULATED_NAMES_T2, \
     GRAPH_AUDIO
 
 from gui import Application
+
 
 # GROUP STATES
 C_GROUP = "C-GROUP"

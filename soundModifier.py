@@ -145,6 +145,11 @@ class SoundModifier:
         for s in self.__manipulated_sound_files:
             s.set_phase_shift(phase_shift)
 
+    def stop_play(self):
+        if self.__should_play:
+            self.__should_play = False
+            sounddevice.stop()
+
     def toggle_play(self, mute=False):
         """Creates a thread that plays the audio files
            until should_play=false, if should_play
@@ -156,10 +161,10 @@ class SoundModifier:
         else:
             self.__should_play = True
             if not mute:
-                thread = threading.Thread(target=self.play_audio_files)
+                thread = threading.Thread(target=self.play_audio_files, args=(self, ))
                 thread.start()
 
-    def play_audio_files(self):
+    def play_audio_files(self, sound_mod):
         """Play the 'current' sound files until should_play is false,
            where the original sound is output on the left speaker,
            and the manipulated is output on the right speaker"""
@@ -170,6 +175,7 @@ class SoundModifier:
                                     self.__manipulated_sound_files[self.__current_sound_index].get_data()])
             sounddevice.play(data)
             sounddevice.wait()
+
             if not self.__should_play:
                 run = False
 
@@ -214,6 +220,7 @@ class SoundModifier:
             writer.save()
             self.__results = []
             self.__finished_sequence += 1
+            self.stop_play()
         else:
             self.__current_sound_index = (self.__current_sound_index + 1) % len(self.__original_sound_files)
 

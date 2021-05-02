@@ -80,6 +80,7 @@ class Application(tk.Frame):
         self.ax = None
         self.create_demo_step_three()
         self.grid(row=0, column=0)
+        self.master.protocol("WM_DELETE_WINDOW", self.on_quit)
 
 
         self.arduino_interface = None
@@ -88,6 +89,10 @@ class Application(tk.Frame):
             self.arduino_interface.listen_async()
 
     # TKINTER METHODS
+
+    def on_quit(self):
+        self.master.quit()
+        self.sound_modifier.stop_play()
 
     def clear_page(self):
         """Loop through the frame's widgets
