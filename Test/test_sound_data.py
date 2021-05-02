@@ -6,7 +6,7 @@ from soundData import SoundData
 
 # TEST DATA
 # The path to a test wave file
-TEST_FILE_NAME = './assets/sound/test.wav'
+TEST_FILE_NAME = './assets/sound/Arco_Bass_1.wav'
 
 # Load the wave file using an external library
 RAW_DATA, SAMPLE_RATE = sf.read(TEST_FILE_NAME)

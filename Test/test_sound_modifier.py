@@ -3,7 +3,7 @@ import soundfile as sf
 import numpy as np
 import copy as cp
 import random
-from config import ORIGINAL_NAMES, MANIPULATED_NAMES
+from config import ORIGINAL_NAMES_C, MANIPULATED_NAMES_C
 from soundData import SoundData
 from soundModifier import SoundModifier
 from csvWriter import ORIGINAL_KEY, MANIPULATED_KEY, \
@@ -15,15 +15,15 @@ from csvWriter import ORIGINAL_KEY, MANIPULATED_KEY, \
 # MANIPULATED_NAMES = ["./assets/sound/test.wav", "./assets/sound/test.wav"]
 
 # Create a sound modifier object used for the tests
-SOUND_MODIFIER = SoundModifier(ORIGINAL_NAMES, MANIPULATED_NAMES)
+SOUND_MODIFIER = SoundModifier(ORIGINAL_NAMES_C, MANIPULATED_NAMES_C)
 
 # Load the wave file using an external library
-RAW_DATA, SAMPLE_RATE = sf.read(ORIGINAL_NAMES[0])
+RAW_DATA, SAMPLE_RATE = sf.read(ORIGINAL_NAMES_C[0])
 # Calculate time data for the raw audio data
 RAW_TIME = np.linspace(0, len(RAW_DATA) / SAMPLE_RATE, num=len(RAW_DATA))
 # Create a sound data object used for the tests
-ORIGINAL_SOUND_DATA = SoundData(ORIGINAL_NAMES[0])
-MANIPULATED_SOUND_DATA = SoundData(MANIPULATED_NAMES[0])
+ORIGINAL_SOUND_DATA = SoundData(ORIGINAL_NAMES_C[0])
+MANIPULATED_SOUND_DATA = SoundData(MANIPULATED_NAMES_C[0])
 # Get the default phase shift, used to comparing
 # DEFAULT_PHASE_SHIFT = ORIGINAL_SOUND_DATA.get_default_phase_shift()
 
@@ -57,13 +57,13 @@ class TestSoundModifier(unittest.TestCase):
     def test_get_number_of_sounds(self):
         """Ensure get_number_of_sounds
            output the correct number of sounds"""
-        self.assertEqual(SOUND_MODIFIER.get_number_of_sounds(), 5, "Should be equal")
+        self.assertEqual(SOUND_MODIFIER.get_number_of_sounds(), 3, "Should be equal")
 
     def test_get_finished_sequence(self):
         """Ensure get_finished_sequence
            increase after listening to all
            available sound files"""
-        for n in ORIGINAL_NAMES:
+        for n in ORIGINAL_NAMES_C:
             SOUND_MODIFIER.next_audio_files()
         self.assertEqual(SOUND_MODIFIER.get_finished_sequence(), 1, "Should be equal")
 
