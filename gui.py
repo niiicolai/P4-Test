@@ -170,15 +170,23 @@ class Application(tk.Frame):
         self.create_top_background()
         self.create_top_panel("Trial test - preparation for the real test")
         self.create_top_small_panel("Here you can try out the task of aligning the sounds. Use the play button to play\n"
-                                    " and listen to the sounds repeatedly and align the two sounds until you think they match.\n"
+                                    " and listen to the sounds repeatedly and align the two sounds until you think they match.\n\n"
                                     "You may find this difficult, but do your best. Adjust the volume on your laptop to a \n"
                                     "comfortable level. After some experimentation, an \"OK\" button will appear.\n"
-                                    "In the real test, the 'OK' button is visible at all times, to not tell you when\n"
-                                    "the sounds are aligned. When you feel comfortable with the task you can go\n"
-                                    "to the actual listening test by pressing ‘OK’")
-        self.create_phase_shift_control(title_position=SLIDER_TITLE_POSITION, title_size=SLIDER_TITLE_SIZE,
-                                        command=(lambda e: self.demo_phase_shift()))
+                                    "When you feel comfortable with the task you can go\n"
+                                    "to the actual listening test by pressing ‘OK’.")
+        self.create_phase_shift_control()
+        # self.create_phase_shift_control(title_position=SLIDER_TITLE_POSITION, title_size=SLIDER_TITLE_SIZE,
+        #                                command=(lambda e: self.set_phase_shift()))
         self.create_play_button()
+
+        # Create confirm button
+        button = tk.Button(self.master, text="OK", fg=DEFAULT_TXT_COLOR,
+                           bg=DEFAULT_BGG_COLOR, width=D_BUTTON_WIDTH,
+                           height=D_BUTTON_HEIGHT, command=self.confirm)
+        # Place button
+        button.place(x=D_BUTTON_POSITION[0], y=D_BUTTON_POSITION[1])
+
 
     def create_demo_step_four(self):
         """Creates a page representing the fourth step of the
@@ -530,11 +538,11 @@ class Application(tk.Frame):
         if self.callback_activated or \
             self.phase_shift_slider is None: return
 
-        offset = .2
+        """offset = .2"""
         if phase_shift is None:
             phase_shift = self.phase_shift_slider.get()
         self.set_phase_shift(phase_shift)
-
+        """
         is_within_greater = (self.sound_modifier.current_original_sound().get_phase_shift()-offset <=
                       self.sound_modifier.current_manipulated_sound().get_phase_shift())
         is_within_less = (self.sound_modifier.current_original_sound().get_phase_shift()+offset >=
@@ -544,3 +552,4 @@ class Application(tk.Frame):
             self.callback_activated = True
             if self.next_callback == "ONE": self.create_demo_step_two_callback()
             elif self.next_callback == "TWO": self.create_demo_step_three_callback()
+        """
