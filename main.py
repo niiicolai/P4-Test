@@ -13,7 +13,7 @@ T1_GROUP = "T1-GROUP"
 T2_GROUP = "T2-GROUP"
 
 # Set to C_GROUP, T1_GROUP, or T2_GROUP depending on the test
-CURRENT_TEST_GROUP = T1_GROUP
+CURRENT_TEST_GROUP = T2_GROUP
 
 if __name__ == '__main__':
 

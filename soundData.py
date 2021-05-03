@@ -39,13 +39,13 @@ class SoundData:
     """A class used to easy manipulate an audio file,
        plot its graph, and listen to its output"""
 
-    def __init__(self, filename):
+    def __init__(self, filename, title):
         """The class constructor. Reads an audio file with
            the name provided as an argument and save its
            data as a 1-D. array of amplitude and a related
            sample rate"""
         self.__data, self.__sample_rate = sf.read(filename)
-        self.__title = filename
+        self.__title = title
         self.__amplitude = 1
         self.__amplitude_shift = 0
         self.__phase_shift = 0

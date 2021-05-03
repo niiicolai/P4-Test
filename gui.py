@@ -279,8 +279,10 @@ class Application(tk.Frame):
         self.current_page = "SOUNDCONTROL"
         self.create_top_background()
         self.create_top_panel()
-        text = f"Sound {self.sound_modifier.get_current_sound_index() + 1} out " \
-               f"of {self.sound_modifier.get_number_of_sounds()}"
+        text = f"TASK {self.sound_modifier.get_current_sound_index() + 1}:\n" \
+               f"Sound {self.sound_modifier.get_current_sound_index() + 1} " \
+               f"out of {self.sound_modifier.get_number_of_sounds()}"
+
         self.create_top_small_panel(text)
         self.create_phase_shift_control()
 
@@ -502,8 +504,10 @@ class Application(tk.Frame):
         if self.sound_modifier.get_finished_sequence() > 0:
             self.create_goodbye_widgets()
         else:
+            self.set_phase_shift((1.6/2))
+            self.set_slider_value((1.6/2))
             self.plot_current_files()
-            self.counter_label.config(text=f"Sound {self.sound_modifier.get_current_sound_index() + 1} out "
+            self.counter_label.config(text=f"TASK {self.sound_modifier.get_current_sound_index() + 1}:\nSound {self.sound_modifier.get_current_sound_index() + 1} out "
                                            f"of {self.sound_modifier.get_number_of_sounds()}")
 
     def set_slider_value(self, val):
@@ -524,6 +528,7 @@ class Application(tk.Frame):
         elif self.current_page == "THREE":
             self.create_demo_step_four()
         elif self.current_page == "FOUR":
+            self.sound_modifier.randomize_original_sound_phase_shift()
             self.create_sound_control_widgets()
         elif self.current_page == "SOUNDCONTROL":
             self.next_audio_files()

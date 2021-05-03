@@ -3,6 +3,7 @@ import threading
 import random
 import sounddevice
 import numpy as np
+import copy as cp
 from soundData import SoundData
 from csvWriter import CSVWriter, ORIGINAL_KEY, \
     MANIPULATED_KEY, AMPLITUDE_KEY, PHASE_SHIFT_KEY, TITLE_KEY
@@ -70,8 +71,8 @@ class SoundModifier:
         if len(original_names) != len(manipulated_names):
             raise Exception("The size of the arrays should be equal!")
 
-        self.__original_sound_files = [SoundData(name) for name in original_names]
-        self.__manipulated_sound_files = [SoundData(name) for name in manipulated_names]
+        self.__original_sound_files = [SoundData(name["filename"], name["title"]) for name in original_names]
+        self.__manipulated_sound_files = [SoundData(name["filename"], name["title"]) for name in manipulated_names]
         self.__amplitude_range = [1.6, 1.3, .9, .6, .3, 0, -.3, -.6, -.9, -1.3, -1.6]
         self.__phase_shift_range = [1.6, 1.3, .9, .6, .3, 0]  # , -.3, -.6, -.9, -1.3, -1.6]
         self.__results = []
@@ -84,6 +85,7 @@ class SoundModifier:
         # Ensure to randomize the original in the time domain
         # when initializing the class
         self.randomize_original_sound_phase_shift()
+        self.shuffle_sound_files()
 
     def get_should_play(self):
         """Returns whether or not the
@@ -231,3 +233,15 @@ class SoundModifier:
                 self.toggle_play()
 
             self.randomize_original_sound_phase_shift()
+
+    def shuffle_sound_files(self):
+        shuffled = []
+        for i in range(0, len(self.__original_sound_files)):
+            shuffled.append({"original": self.__original_sound_files[i],
+                             "manipulated": self.__manipulated_sound_files[i]})
+
+        random.shuffle(shuffled)
+
+        for i in range(0, len(shuffled)):
+            self.__original_sound_files[i] = shuffled[i]["original"]
+            self.__manipulated_sound_files[i] = shuffled[i]["manipulated"]
