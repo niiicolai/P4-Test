@@ -71,9 +71,6 @@ class Application(tk.Frame):
         self.sound_modifier = SoundModifier(original_names, manipulated_names)
         self.master = master
         self.graph_audio = graph_audio
-        self.master.geometry(SIZE)
-        self.master.resizable(False, False)
-        self.master.title(TITLE)
         self.callback_activated = False
         self.current_page = "ONE"
         self.next_callback = "ONE"
@@ -81,9 +78,16 @@ class Application(tk.Frame):
         self.top_label = None
         self.phase_shift_labels = None
         self.ax = None
+        self.counter_label = None
+        self.play_button = None
+        self.canvas = None
+
+        self.master.geometry(SIZE)
+        self.master.resizable(False, False)
+        self.master.title(TITLE)
+        self.master.protocol("WM_DELETE_WINDOW", self.on_quit)
         self.create_demo_step_one()
         self.grid(row=0, column=0)
-        self.master.protocol("WM_DELETE_WINDOW", self.on_quit)
 
         self.arduino_interface = None
         if ARDUINO_INTERFACE:
