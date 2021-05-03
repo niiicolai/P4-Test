@@ -45,11 +45,15 @@ class SoundData:
            data as a 1-D. array of amplitude and a related
            sample rate"""
         self.__data, self.__sample_rate = sf.read(filename)
+        self.__title = filename
         self.__amplitude = 1
         self.__amplitude_shift = 0
         self.__phase_shift = 0
         self.__is_playing = False
         self.__possible_duration = 1.6
+
+    def get_title(self):
+        return self.__title
 
     def get_shifted_data_array(self):
         """Returns the audio audio shifted either left or right

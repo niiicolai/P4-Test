@@ -5,7 +5,7 @@ import sounddevice
 import numpy as np
 from soundData import SoundData
 from csvWriter import CSVWriter, ORIGINAL_KEY, \
-    MANIPULATED_KEY, AMPLITUDE_KEY, PHASE_SHIFT_KEY
+    MANIPULATED_KEY, AMPLITUDE_KEY, PHASE_SHIFT_KEY, TITLE_KEY
 
 """
     The 10 steps below provide the general usage of this class
@@ -184,10 +184,12 @@ class SoundModifier:
            to the results list"""
         self.__results.append({
             ORIGINAL_KEY: {
+                TITLE_KEY: self.__original_sound_files[self.__current_sound_index].get_title(),
                 AMPLITUDE_KEY: self.__original_sound_files[self.__current_sound_index].get_amplitude(),
                 PHASE_SHIFT_KEY: self.__original_sound_files[self.__current_sound_index].get_phase_shift()
             },
             MANIPULATED_KEY: {
+                TITLE_KEY: self.__manipulated_sound_files[self.__current_sound_index].get_title(),
                 AMPLITUDE_KEY: self.__manipulated_sound_files[self.__current_sound_index].get_amplitude(),
                 PHASE_SHIFT_KEY: self.__manipulated_sound_files[self.__current_sound_index].get_phase_shift()
             }

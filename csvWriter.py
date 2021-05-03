@@ -25,8 +25,10 @@ FILE_PATH = 'assets/csv/result.csv'
 
 # CSV Field names
 FIELD_NAMES = [
+    'original filename',
     'original amplitude',
     'original phase shift',
+    'manipulated filename',
     'manipulated amplitude',
     'manipulated phase shift',
     'amplitude difference',
@@ -37,6 +39,7 @@ ORIGINAL_KEY = "original"
 MANIPULATED_KEY = "manipulated"
 AMPLITUDE_KEY = "amplitude"
 PHASE_SHIFT_KEY = "phase_shift"
+TITLE_KEY = "filename"
 
 
 class CSVWriter:
@@ -62,12 +65,14 @@ class CSVWriter:
 
                 # Format row
                 res = {
-                    FIELD_NAMES[0]: v[ORIGINAL_KEY][AMPLITUDE_KEY],
-                    FIELD_NAMES[1]: v[ORIGINAL_KEY][PHASE_SHIFT_KEY],
-                    FIELD_NAMES[2]: v[MANIPULATED_KEY][AMPLITUDE_KEY],
-                    FIELD_NAMES[3]: v[MANIPULATED_KEY][PHASE_SHIFT_KEY],
-                    FIELD_NAMES[4]: amplitude_diff,
-                    FIELD_NAMES[5]: phase_shift_diff
+                    FIELD_NAMES[0]: v[ORIGINAL_KEY][TITLE_KEY],
+                    FIELD_NAMES[1]: v[ORIGINAL_KEY][AMPLITUDE_KEY],
+                    FIELD_NAMES[2]: v[ORIGINAL_KEY][PHASE_SHIFT_KEY],
+                    FIELD_NAMES[3]: v[MANIPULATED_KEY][TITLE_KEY],
+                    FIELD_NAMES[4]: v[MANIPULATED_KEY][AMPLITUDE_KEY],
+                    FIELD_NAMES[5]: v[MANIPULATED_KEY][PHASE_SHIFT_KEY],
+                    FIELD_NAMES[6]: amplitude_diff,
+                    FIELD_NAMES[7]: phase_shift_diff
                 }
 
                 # Write results to the csv file
