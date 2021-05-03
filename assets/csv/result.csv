@@ -1,7 +1,7 @@
 original filename,original amplitude,original phase shift,manipulated filename,manipulated amplitude,manipulated phase shift,amplitude difference,phase shift difference
-Dark_Piano_1_cp,1,1.3,Dark_Piano_1_Reverb_Room_cp,1,0,0,1.3
-Snare_1_cp,1,0.3,Snare_1_Reverb_Room_cp,1,0.8,0,0.5
-Dark_Piano_1,1,1.6,Dark_Piano_1_Reverb_Room,1,0.8,0,0.8
-Arco_Bass_1,1,0.3,Arco_Bass_1_Reverb_Room,1,0.8,0,0.5
-Arco_Bass_1_cp,1,1.3,Arco_Bass_1_Reverb_Room_cp,1,0.8,0,0.5
-Snare_1,1,0.6,Snare_1_Reverb_Room,1,0.8,0,0.20000000000000007
+Arco_Bass_1_cp,1,1.6,Arco_Bass_1_Reverb_Room_cp,1,1.343,0,0.2570000000000001
+Snare_1_cp,1,1.3,Snare_1_Reverb_Room_cp,1,1.323,0,0.02299999999999991
+Dark_Piano_1_cp,1,1.6,Dark_Piano_1_Reverb_Room_cp,1,1.509,0,0.09100000000000019
+Dark_Piano_1,1,0.3,Dark_Piano_1_Reverb_Room,1,1.388,0,1.0879999999999999
+Arco_Bass_1,1,1.3,Arco_Bass_1_Reverb_Room,1,0.031,0,1.2690000000000001
+Snare_1,1,0.3,Snare_1_Reverb_Room,1,1.415,0,1.115
