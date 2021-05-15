@@ -18,12 +18,12 @@ from csvWriter import ORIGINAL_KEY, MANIPULATED_KEY, \
 SOUND_MODIFIER = SoundModifier(ORIGINAL_NAMES_C, MANIPULATED_NAMES_C)
 
 # Load the wave file using an external library
-RAW_DATA, SAMPLE_RATE = sf.read(ORIGINAL_NAMES_C[0])
+RAW_DATA, SAMPLE_RATE = sf.read("./assets/sound/Arco_Bass_1.wav")
 # Calculate time data for the raw audio data
 RAW_TIME = np.linspace(0, len(RAW_DATA) / SAMPLE_RATE, num=len(RAW_DATA))
 # Create a sound data object used for the tests
-ORIGINAL_SOUND_DATA = SoundData(ORIGINAL_NAMES_C[0])
-MANIPULATED_SOUND_DATA = SoundData(MANIPULATED_NAMES_C[0])
+ORIGINAL_SOUND_DATA = SoundData("./assets/sound/Arco_Bass_1.wav", "Arco_Bass_1.wav")
+MANIPULATED_SOUND_DATA = SoundData("./assets/sound/Arco_Bass_1_Reverb_Closet.wav", "Arco_Bass_1_Reverb_Closet.wav")
 # Get the default phase shift, used to comparing
 # DEFAULT_PHASE_SHIFT = ORIGINAL_SOUND_DATA.get_default_phase_shift()
 
@@ -57,7 +57,7 @@ class TestSoundModifier(unittest.TestCase):
     def test_get_number_of_sounds(self):
         """Ensure get_number_of_sounds
            output the correct number of sounds"""
-        self.assertEqual(SOUND_MODIFIER.get_number_of_sounds(), 3, "Should be equal")
+        self.assertEqual(SOUND_MODIFIER.get_number_of_sounds(), 6, "Should be equal")
 
     def test_get_finished_sequence(self):
         """Ensure get_finished_sequence
@@ -66,25 +66,6 @@ class TestSoundModifier(unittest.TestCase):
         for n in ORIGINAL_NAMES_C:
             SOUND_MODIFIER.next_audio_files()
         self.assertEqual(SOUND_MODIFIER.get_finished_sequence(), 1, "Should be equal")
-
-    def test_append_current_result_data(self):
-        """Ensure append_current_result_data
-           appends a dictionary of the current
-           sound states to the result list"""
-        data = {
-            ORIGINAL_KEY: {
-                AMPLITUDE_KEY: SOUND_MODIFIER.current_original_sound().get_amplitude(),
-                PHASE_SHIFT_KEY: SOUND_MODIFIER.current_original_sound().get_phase_shift()
-            },
-            MANIPULATED_KEY: {
-                AMPLITUDE_KEY: SOUND_MODIFIER.current_manipulated_sound().get_amplitude(),
-                PHASE_SHIFT_KEY: SOUND_MODIFIER.current_manipulated_sound().get_phase_shift()
-            }
-        }
-        next_state = cp.copy(SOUND_MODIFIER.get_results())
-        next_state.append(data)
-        SOUND_MODIFIER.append_current_result_data()
-        self.assertEqual(SOUND_MODIFIER.get_results(), next_state, "Should be equal")
 
     def test_randomize_original_sound_phase_shift(self):
         """Ensure randomize_original_sound_phase_shift

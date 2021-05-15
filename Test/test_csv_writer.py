@@ -2,7 +2,7 @@ import unittest
 import random
 import csv
 from csvWriter import CSVWriter, ORIGINAL_KEY, \
-    MANIPULATED_KEY, AMPLITUDE_KEY, PHASE_SHIFT_KEY
+    MANIPULATED_KEY, AMPLITUDE_KEY, PHASE_SHIFT_KEY, TITLE_KEY
 
 
 # TEST DATA
@@ -12,10 +12,10 @@ CSV_FILE = "./assets/csv/result.csv"
 # Create some randomized test data
 a, b = -2, 2
 data = [
-    {ORIGINAL_KEY: {AMPLITUDE_KEY: random.randint(a, b), PHASE_SHIFT_KEY: -random.randint(a, b)},
-    MANIPULATED_KEY: {AMPLITUDE_KEY: random.randint(a, b), PHASE_SHIFT_KEY: random.randint(a, b)}},
-    {ORIGINAL_KEY: {AMPLITUDE_KEY: random.randint(a, b), PHASE_SHIFT_KEY: -random.randint(a, b)},
-    MANIPULATED_KEY: {AMPLITUDE_KEY: random.randint(a, b), PHASE_SHIFT_KEY: random.randint(a, b)}},
+    {ORIGINAL_KEY: {TITLE_KEY: "a", AMPLITUDE_KEY: random.randint(a, b), PHASE_SHIFT_KEY: -random.randint(a, b)},
+    MANIPULATED_KEY: {TITLE_KEY: "b", AMPLITUDE_KEY: random.randint(a, b), PHASE_SHIFT_KEY: random.randint(a, b)}},
+    {ORIGINAL_KEY: {TITLE_KEY: "c", AMPLITUDE_KEY: random.randint(a, b), PHASE_SHIFT_KEY: -random.randint(a, b)},
+    MANIPULATED_KEY: {TITLE_KEY: "d", AMPLITUDE_KEY: random.randint(a, b), PHASE_SHIFT_KEY: random.randint(a, b)}},
 ]
 
 # Create a csv writer object used for the tests

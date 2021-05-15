@@ -13,7 +13,7 @@ RAW_DATA, SAMPLE_RATE = sf.read(TEST_FILE_NAME)
 # Calculate time data for the raw audio data
 RAW_TIME = np.linspace(0, len(RAW_DATA) / SAMPLE_RATE, num=len(RAW_DATA))
 # Create a sound data object used for the tests
-SOUND_DATA = SoundData(TEST_FILE_NAME)
+SOUND_DATA = SoundData(TEST_FILE_NAME, "Arco_Bass_1")
 # Get the default phase shift, used to comparing
 # DEFAULT_PHASE_SHIFT = SOUND_DATA.get_default_phase_shift()
 

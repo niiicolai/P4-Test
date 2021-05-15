@@ -137,8 +137,8 @@ class SoundData:
 
     def get_data(self):
         """Returns the data multiplied with the amplitude parameter
-           and shifted by adding the amplitude-shift parameter"""
-        return self.get_shifted_data_array() * self.__amplitude  # + self.__amplitude_shift
+           and shifted by adding the phase-shift parameter"""
+        return self.get_shifted_data_array() * self.__amplitude
 
     def get_amplitude_shift(self):
         """Returns the amplitude shift parameter"""
